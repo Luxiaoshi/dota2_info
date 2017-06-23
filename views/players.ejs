@@ -1,0 +1,62 @@
+<%- include('header') %>
+  <%- include('navbar') %>
+
+  <div id="recent_match">
+    <div class='profile-box'>
+      <div class='circle-img'>
+        <img v-bind:src="profile.avatar" style='width:90px;'>
+      </div>
+      <span class="personaname"> {{profile.personaname}}</span>
+    </div>
+    <div class="container">
+      <div class="left-bar">
+        <table class="table table-bordered">
+          <thead>
+             <tr>
+              <th> 英雄</th>
+              <th> 比赛ID</th>
+              <th> 结束时间</th>
+              <th> 结果</th>
+              <th> KDA(K/D/A)</th>
+            </tr>
+          </thead>
+          <tbody v-for="match in recent_matches">
+            <tr>
+              <td>
+                <img class="hero_img" v-bind:src="match.image">
+                {{match.cn_name}}
+              </td>
+              <td> {{match.match_id}}</td>
+              <td> {{match.ended_at}}</td>
+              <td> {{match.result}}</td>
+              <td> {{match.kda}} ({{match.kills}}/{{match.deaths}}/{{match.assists}})</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th> 英雄</th>
+              <th> 使用次数</th>
+              <th> 胜场</th>
+              <th> 胜率</th>
+            </tr>
+          </thead>
+          <tbody v-for="hero in heroes">
+            <tr>
+              <td>
+                <img class="hero_img" v-bind:src="hero.image">
+                {{hero.cn_name}}
+              </td>
+              <td> {{hero.games}}</td>
+              <td> {{hero.win}}</td>
+              <td> {{hero.win_rate}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="/javascripts/players.bundle.js"></script>
+<%- include('footer') %>
+
